@@ -1,39 +1,229 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test DevOps</title>
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #1e3c72, #2a5298);
-            color: #ffffff;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
+        * {
             margin: 0;
-            text-align: center;
+            padding: 0;
+            box-sizing: border-box;
         }
 
+
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+        color: #ffffff;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .background-animation {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: 0;
+    }
+
+    .circle {
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.05);
+        animation: float 20s infinite ease-in-out;
+    }
+
+    .circle:nth-child(1) {
+        width: 300px;
+        height: 300px;
+        top: -150px;
+        left: -150px;
+        animation-delay: 0s;
+    }
+
+    .circle:nth-child(2) {
+        width: 200px;
+        height: 200px;
+        bottom: -100px;
+        right: -100px;
+        animation-delay: 4s;
+    }
+
+    .circle:nth-child(3) {
+        width: 150px;
+        height: 150px;
+        top: 50%;
+        right: 10%;
+        animation-delay: 2s;
+    }
+
+    @keyframes float {
+        0%, 100% {
+            transform: translate(0, 0) scale(1);
+        }
+        33% {
+            transform: translate(30px, -30px) scale(1.1);
+        }
+        66% {
+            transform: translate(-20px, 20px) scale(0.9);
+        }
+    }
+
+    .container {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 40px;
+    }
+
+    h1 {
+        font-size: 4em;
+        font-weight: 700;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        margin-bottom: 30px;
+        animation: fadeInDown 1s ease-out;
+        text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+    }
+
+    .subtitle {
+        font-size: 1.5em;
+        color: #b8c5d6;
+        margin-bottom: 40px;
+        animation: fadeInUp 1s ease-out 0.3s both;
+        letter-spacing: 1px;
+    }
+
+    .features {
+        display: flex;
+        gap: 30px;
+        justify-content: center;
+        flex-wrap: wrap;
+        margin-top: 50px;
+        animation: fadeInUp 1s ease-out 0.6s both;
+    }
+
+    .feature-card {
+        background: rgba(255, 255, 255, 0.05);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 20px;
+        padding: 30px;
+        width: 250px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+    }
+
+    .feature-card:hover {
+        transform: translateY(-10px);
+        background: rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-icon {
+        font-size: 3em;
+        margin-bottom: 15px;
+        filter: drop-shadow(0 0 10px rgba(102, 126, 234, 0.5));
+    }
+
+    .feature-title {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+        color: #ffffff;
+    }
+
+    .feature-description {
+        font-size: 0.9em;
+        color: #b8c5d6;
+        line-height: 1.6;
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @media (max-width: 768px) {
         h1 {
-            font-size: 3em;
-            background: rgba(0,0,0,0.3);
-            padding: 20px 40px;
-            border-radius: 15px;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            font-size: 2.5em;
         }
 
-        @media (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-                padding: 15px 20px;
-            }
+        .subtitle {
+            font-size: 1.2em;
         }
-    </style>
+
+        .features {
+            gap: 20px;
+        }
+
+        .feature-card {
+            width: 100%;
+            max-width: 300px;
+        }
+    }
+</style>
+
+
 </head>
 <body>
-    <h1>Bienvenue dans le pipeline DevOps</h1>
+    <div class="background-animation">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+
+
+<div class="container">
+    <h1>Bienvenue dans le Pipeline DevOps</h1>
+    <p class="subtitle">Automatisation • Déploiement Continu • Excellence</p>
+
+    <div class="features">
+        <div class="feature-card">
+            <div class="feature-icon">🚀</div>
+            <div class="feature-title">CI/CD</div>
+            <div class="feature-description">Intégration et déploiement continus pour une livraison rapide</div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <div class="feature-title">Performance</div>
+            <div class="feature-description">Optimisation maximale pour des applications ultra-rapides</div>
+        </div>
+
+        <div class="feature-card">
+            <div class="feature-icon">🔒</div>
+            <div class="feature-title">Sécurité</div>
+            <div class="feature-description">Protection avancée à chaque étape du pipeline</div>
+        </div>
+    </div>
+</div>
+
+
 </body>
 </html>
